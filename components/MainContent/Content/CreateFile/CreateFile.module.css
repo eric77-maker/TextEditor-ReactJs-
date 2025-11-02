@@ -1,0 +1,149 @@
+.container{
+    position: absolute;
+    top: 11%;
+    left: 5%;
+    right: 5%;
+    bottom: 4%;
+    background-color: transparent;
+    border-radius: 1vh;
+    resize: none;
+    padding: 1vh 0.5vw;
+    border: none;
+    box-shadow: 1.5px 1.5px 2px hsl(0, 0%, 65%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+
+.textInput{
+    position: relative;
+    min-height: 90%;
+    max-height: 90%;
+    margin: 3.5% 0.5% 6.5%; 
+    overflow-y: scroll;
+    width: 99%;
+    border: none;
+}
+
+.textInput::placeholder{
+    color: hsl(0, 0%, 68%);
+}
+
+.textInput:focus{
+    outline: none;
+}
+
+.resizeDiv{
+    position: absolute;
+    left: 0.2vw;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    column-gap: 0.8vw;
+    z-index: 10;
+}
+
+.resizeDiv button{
+    display: grid;
+    place-content: center;
+    background-color: transparent;
+    padding: 2px 5px;
+    cursor: pointer;
+    border: none;
+    width: 35px;
+    box-shadow: 1px 1px 1px hsl(204, 7%, 73%, 0.7);
+    border-radius: 2px;
+}
+
+.moveUpBtn{
+    position: absolute;
+    bottom: 10vh;
+    right: 5vw;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+#pagesDiv{
+    font-size: 0.95rem;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    left: 1vw;
+    bottom: 0.7vh;
+    border-radius: 4px;
+    padding: 0.3vh 0.5vw; 
+}
+
+.pagesDivLight{
+    color: hsl(120, 14%, 23%, 0.8);
+    background-color: #fff;
+    box-shadow: 1px 1px 1.5px gray;
+}
+.pagesDivDark{
+    color: #fff;
+    background-color: hsl(0, 0%, 49%);
+    box-shadow: 1px 1px 1.5px #fff;
+
+}
+
+
+#goToPage{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    right: 10vw;
+    height: 30px;
+}
+
+
+#goToPage input{
+    max-width: 70px;
+    height: 20px;
+    padding: 0 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#goToPage input:focus{
+    outline: none;
+}
+
+#goToPage button{
+    display: grid;
+    place-content: center;
+    padding: 1px 3px;
+    margin-left: -2px;
+    border-radius: 2px;
+    height: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.goToPageLight input{
+    color: hsl(180, 8%, 44%);
+    border: 1px solid hsl(0, 0%, 72%);
+}
+
+.goToPageLight button{
+    color: hsl(180, 8%, 44%);
+    background-color: hsl(240, 100%, 92%);
+    border: 1px solid hsl(180, 6%, 65%);
+}
+
+
+.goToPageDark input{
+    background-color: #fff;
+    border: 1px solid gray;
+}
+
+
+.goToPageDark button{
+    color: #fff;
+    border: 1px solid hsl(0, 0%, 40%);
+    background-color: hsl(0, 0%, 40%);
+}

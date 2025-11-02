@@ -1,0 +1,41 @@
+.container{
+    flex: 1;
+    background-color: hsl(0, 0%, 78%);
+    border-top-right-radius: 0.5vh;
+    border-top-left-radius: 0.5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw 0 2vw;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.container div:first-child{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.searchBtn{
+    display: grid;
+    place-content: center;
+    border: none;
+    padding-right: 0.5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+
+.heroImg{
+    max-width: 25px;
+    height: auto;
+}
+
+.container h1{
+    color: #fff;
+    margin-right: 0.6vw;
+    text-shadow: 1px 1px 1px gray;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

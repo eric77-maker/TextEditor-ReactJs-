@@ -1,0 +1,9 @@
+.modeDiv button{
+    border: none;
+    background-color: transparent;
+}
+.modeDiv button img{
+    max-width: 13px;
+    height: auto;
+    min-width: 8px;
+} 

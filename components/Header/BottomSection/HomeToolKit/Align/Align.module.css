@@ -1,0 +1,49 @@
+
+.alignDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    height: 100%;
+    border-right: 1px solid hsla(249, 53%, 90%, 0.8);
+    padding: 0 1vw 0 0.5vw ;
+}
+
+.alignDiv div:first-child{
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.alignDiv div:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 4px;
+}
+
+
+.alignDiv div:last-child div:last-child{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+
+.btn{
+    display: grid;
+    place-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    opacity: 0.85;
+    border: 1px solid hsl(240, 94%, 87%);
+    border-radius: 5px;
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover{
+    background-color: aliceblue;
+}

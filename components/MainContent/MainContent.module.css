@@ -1,0 +1,31 @@
+#container{
+    flex: 1;
+    display: flex;
+    padding: 2vh 2vw;
+    position: relative;
+
+}
+
+.containerLight{
+    background-color: hsl(0, 100%, 99%, 0.9);
+}
+
+.containerDark{
+    background-color: #555;
+}
+
+.content{
+    position: relative;
+    flex: 1;
+    padding: 1vh 2vw;
+}
+
+
+.backgroundText{
+    font-size: 15vw;
+    text-align: center;
+    margin-top: 25vh;
+    color: gray;
+    opacity: 0.05;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

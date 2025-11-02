@@ -1,0 +1,24 @@
+.container{
+    position: absolute;
+    top: 0.5vh;
+    bottom: 0.5vh;
+    left: 0.2vw;
+    left: 5vw;
+    right: 0.2vw;
+    right: 5vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid hsl(0, 0%, 88%);
+    border-radius: 0.8vh;
+}
+
+#loadingPage{
+    height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+#loadingPage p{
+    color: #333;
+    font-size: 2rem;
+}

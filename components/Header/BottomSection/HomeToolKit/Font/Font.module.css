@@ -1,0 +1,17 @@
+.fontDiv{
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid hsla(249, 53%, 90%, 0.8);
+    height: 100%;
+    row-gap: 4px;
+    justify-content: center;
+    padding: 0 1vw;
+}
+
+
+.fontDiv div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}

@@ -1,0 +1,93 @@
+.container{
+    position: relative;
+    margin-left: 2vw;
+}
+
+.dropDownBtn{
+    display: grid;
+    place-content: center;
+    width: 28px;
+    border: none;
+    background-color: transparent;
+    margin-left: -0.6vw;
+}
+
+.dropDownMenu{
+    display: none;
+    flex-direction: column;
+    top: 3.23vh;
+    row-gap: 1.5vh;
+    z-index: 20;
+    left: -1vw;
+    padding: 0.5vh 0;
+    width: 30px;
+    align-items: center;
+    position: absolute;
+    background-color: #fff;
+    border-top-right-radius: 1vh;
+    border-bottom-right-radius: 1vh;
+    box-shadow: 1px 1px 1px hsl(0, 36%, 85%);
+}
+
+.dropDownMenu button{
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+
+.topSectionImg{
+    width: 16px;
+    height: 16px;
+}
+
+
+.topSectionToolkit{
+    z-index: 15;
+    display: none;
+    color: hsla(120, 11%, 32%, 0.98);
+    color: hsl(240, 12%, 57%, 0.98);
+    font-size: 12px;
+    position: absolute;
+    text-wrap: wrap;
+    padding: 0.5vh 0.4vw;
+    border-radius: 0.5vh;
+    background-color: #fff;
+    border: 1px solid rgb(184, 184, 184);
+    box-shadow: 1px 1px 1px rgb(184, 184, 184);
+    top: 0;
+    right: 15px;
+    height: fit-content;
+    width: 90px;
+}
+
+#openFileBtn:hover #openToolKit{
+    display: block;
+}
+
+#saveFileBtn:hover #saveToolKit{
+    display: block;
+}
+
+#undoActionBtn:hover #undoToolKit{
+    display: block;
+}
+
+#redoActionBtn:hover #redoToolKit{
+    display: block;
+}
+
+
+#printBtn:hover #printToolKit{
+    display: block;
+}
+
+
+/* @media screen and (max-width: 300px) {
+    .container{
+        flex: 1;
+        display: flex;
+        margin-left: 5vw;
+        min-width: 30px;
+    }
+} */

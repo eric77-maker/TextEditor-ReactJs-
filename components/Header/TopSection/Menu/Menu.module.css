@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1vw;
+    padding-left: 1vw;
+    align-items: center;
+    margin: 0 2vw 0 1vw;
+    border-left: 1px solid #fff;
+}
+
+.container button{
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+.topSectionImg{
+    min-width: 10px;
+    max-width: 15px;
+} 
+
+.topSectionToolkit{
+    z-index: 10;
+    display: none;
+    color: hsl(0, 0%, 59%);
+    position: absolute;
+    text-wrap: nowrap;
+    padding: 1vh 1vw;
+    border-radius: 0.5vh;
+    background-color: #fff;
+    border: 1px solid rgb(184, 184, 184);
+    bottom: -5.4vh;
+    left: -1.2vw;
+    width: fit-content; 
+}
+
+@media screen and (max-height: 430px) {
+    .topSectionToolkit{
+        left: -1.2vw;
+        width: fit-content;
+        bottom: -6.5vh;
+    }
+}
+
+@media screen and (max-height: 541px) {
+    .topSectionToolkit{
+        bottom: -30px;
+    }
+}
+
+@media screen and (height: 540px) and (width: 720px) {
+    .topSectionToolkit{
+        bottom: -34px;
+    }
+}
+
+#openFileBtn:hover #openToolKit{
+    display: block;
+}
+
+#saveFileBtn:hover #saveToolKit{
+    display: block;
+}
+
+#undoActionBtn:hover #undoToolKit{
+    display: block;
+}
+
+#redoActionBtn:hover #redoToolKit{
+    display: block;
+}
+
+
+#printBtn:hover #printToolKit{
+    display: block;
+}
+
+
+@media screen and (max-width: 300px) {
+    .container{
+        display: none;
+    }
+}

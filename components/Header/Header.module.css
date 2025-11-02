@@ -1,0 +1,7 @@
+.container{
+    flex: 0.12;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.8vh;
+    border: 1px solid hsl(0, 0%, 96%);
+}

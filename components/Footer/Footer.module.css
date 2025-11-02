@@ -1,0 +1,175 @@
+.container{
+    flex: 0.07;
+    display: flex;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw 0 15vw;
+    border-top: 1px solid hsl(0, 0%, 95%);
+}
+
+.container input{
+    padding-left: 2px;
+}
+
+.container input:focus{
+    outline: none;
+}
+
+
+.leftSection{
+    display: flex;
+    align-items: center;
+    column-gap: 0.8vw;
+}
+
+.btnDiv{
+    display: flex;
+    align-items: center;
+    column-gap: 1vw;
+    position: relative;
+}
+
+.btnDiv button{
+    border: none;
+    display: grid;
+    place-content: center;
+    background-color: transparent;
+}
+
+.btnDiv button img{
+    opacity: 0.6;
+}
+
+.leftSection div:nth-child(2) input{
+    height: 22px;
+    min-width: 5vw;
+    max-width: 50px;
+    border: 1px solid hsl(240, 100%, 90%, 0.9);
+    border-radius: 0.4vw;
+    color: gray;
+}
+
+.leftSectionToolkit{
+    z-index: 5;
+    display: none;
+    color: hsl(0, 0%, 59%);
+    position: absolute;
+    text-wrap: nowrap;
+    padding: 1vh 0;
+    border-radius: 0.5vw;
+    background-color: #fff;
+    border: 1px solid rgb(184, 184, 184);
+    top: -6.6vh;
+    left: -1.2vh;
+    right: -15vh;
+}
+
+#firstPageBtn:hover #firstPageToolKit{
+    display: block;
+}
+
+#onePageBackwardBtn:hover #onePageBackwardToolKit{
+    display: block;
+}
+
+#onePageForwardBtn:hover #onePageForwardToolKit{
+    display: block;
+}
+
+#lastPageBtn:hover #lastPageToolKit{
+    display: block;
+}
+
+.rightSection{
+    display: flex;
+    align-items: center;
+    column-gap: 1.5vw;
+}
+
+.rightSection input{
+    height: 22px;
+    min-width: 4.7vw;
+    max-width: 46px;
+    border: 1px solid hsl(240, 100%, 90%, 0.9);
+    border-radius: 0.4vw;
+    color: gray;
+}
+
+.rightSection input::placeholder{
+    color: gray;
+}
+
+.rightSection div:nth-child(2){
+    display: flex;
+    align-items: center;
+    column-gap: 1.5vh;
+}
+
+.rightSection div:nth-child(2) button{
+    display: grid;
+    place-content: center;
+    border: none;
+    background-color: transparent;
+}
+
+.rightSection div:nth-child(2) div{
+    position: relative;
+    width: 10vw;
+    height: 1px;
+    background-color: hsl(0, 13%, 73%);
+    border-radius: 1vw;
+}
+
+.rightSection div:nth-child(2) div span{
+    position: absolute;
+    left: 50%;
+    width: 0.5vw;
+    height: 0.5vw;
+    background-color: hsl(240, 100%, 90%);
+    border: none;
+    border-radius: 50%;
+}
+
+.rightSectionToolkit{
+    z-index: 5;
+    display: none;
+    color: hsl(0, 0%, 59%);
+    position: absolute;
+    text-wrap: nowrap;
+    padding: 1vh 0;
+    border-radius: 0.5vw;
+    background-color: #fff;
+    border: 1px solid rgb(184, 184, 184);
+    top: -6.6vh;
+    left: -11.2vh;
+    right: -5vh;
+}
+
+#zoomOutBtn{
+    position: relative;
+}
+
+#zoomOutBtn:hover #zoomOutToolKit{
+    display: block;
+}
+
+#zoomInBtn{
+    position: relative;
+}
+
+#zoomInBtn:hover #zoomInToolKit{
+    display: block;
+}
+
+#zoomPercentageDiv:hover #zoomPercentageToolKit{
+    display: block;
+}
+
+
+@media  screen and (min-aspect-ratio: 0.76){
+    .container{
+        display: none;
+    }
+}
+

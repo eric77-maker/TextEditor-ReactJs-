@@ -1,0 +1,169 @@
+#container{
+    flex: 0.3;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid hsl(0, 0%, 91%);
+    border-top-right-radius: 1vh;
+    padding: 1vh 0.5vw;
+    box-shadow: -1.5px -1.5px 3px hsla(240, 6%, 91%, 0.9);
+    margin-top: 1.6vh;
+}
+
+.containerLight{
+    background-color: hsl(210, 100%, 99%);
+}
+
+.containerDark{
+    background-color: hsl(0, 2%, 80%);
+}
+
+.header{
+    flex: 0.08;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1vh;
+}
+
+.header button{
+    margin-top: 0.5vh;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1rem;
+    color: hsl(120, 31%, 40%, 0.9);
+}
+
+.titleLight{
+    color: gray;
+    padding: 0.5vh 0;
+}
+
+.titleDark{
+    color: #fff;
+    padding: 0.5vh 0;
+}
+
+#filesDiv{
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5vh;
+    border: 1px solid hsl(0, 0%, 92%);
+    border-radius: 1vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 1vh 1vw;
+    max-height: 75vh;
+}
+
+.containerLight #filesDiv{
+    background-color: #fff;
+    color: hsla(300, 14%, 34%, 0.9);
+}
+
+.containerDark #filesDiv{
+    background-color: hsl(0, 0%, 35%); 
+    color: #fff;
+}
+
+#filesDiv::-webkit-scrollbar{
+    width: 8px;
+}
+
+#filesDiv::-webkit-scrollbar-thumb{
+    background-color: hsl(0, 0%, 78%, 0.95);
+    border-radius: 1.2vh;
+}
+
+#filesDiv span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#textImgDiv{
+    flex: 1;
+    min-width: 130px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 2px;
+}
+
+.fullFileNameToolkit{
+    border: none;
+    font-size: 12px;
+    bottom: -15px;
+    text-wrap: wrap;
+    display: none;
+    align-items: center;
+    padding-left: 4px;
+    border-radius: 4px;
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 80%;
+    z-index: 5;
+    background-color: hsla(0, 5%, 85%, 0.95);
+    color: rgb(255, 255, 245);
+}
+
+.lastFullFileNameToolkit{
+    border: none;
+    background-color: hsla(0, 5%, 85%, 0.95);
+    color: rgb(255, 255, 245);
+    font-size: 12px;
+    text-wrap: wrap;
+    top: -14px;
+    display: none;
+    align-items: center;
+    padding-left: 4px;
+    border-radius: 4px;
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 80%;
+    z-index: 5;
+}
+
+#filesDiv span button{
+    border: none;
+    background-color: transparent;
+    display: grid;
+    place-content: center;
+    opacity: 0.6;
+}
+
+#noFiles{
+    position: absolute;
+    font-size: 1.5vw;
+    font-weight: bold;
+    top: 40%;
+    bottom: 50%;
+    width: fit-content;
+    text-wrap: nowrap;
+    left: 0;
+    right: 0;
+    display: grid;
+    margin: 0 auto;
+    place-content: center;
+    word-spacing: 0.2vh;
+    transform: rotate(-90deg); 
+}
+
+.noFilesLight{
+    color: hsla(0, 0%, 65%, 0.7);
+}
+.noFilesDark{
+    color: gray;
+}
+
+
+@media screen and (max-width: 1030px) {
+    #container{
+        display: none;
+    }
+}

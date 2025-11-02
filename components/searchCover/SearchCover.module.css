@@ -1,0 +1,199 @@
+.searchCover{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+    top: 0;
+    left: 0;
+    left: 5vw;
+    right: 0;
+    right: 5vw;
+    bottom: 0;
+    background-color: hsla(0, 98%, 47%, 0.1);
+    z-index: 30;
+}
+
+.closeSearch{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    color: hsl(0, 100%, 62%);
+}
+
+.searchInput{
+    width: 30vw;
+    min-width: 300px;
+    height: 4vh;
+    min-height: 24px;
+    padding-left: 1vw;
+    color: hsla(300, 2%, 44%, 0.9);
+    background-color: #fff;
+    border: 1px solid hsla(0, 91%, 78%, 0.4);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.searchInput{
+    color: hsla(300, 2%, 44%, 0.4);
+}
+
+.searchInput{
+    outline: none;
+}
+
+.resultDiv{
+    margin-top: 0.5vh;
+    border-radius: 5px;
+    border-left: 1px solid hsl(0, 90%, 92%);
+    border-top: 1px solid hsl(0, 90%, 92%);
+    background-color: #333;
+    color: #fff;
+    box-shadow: 2px 2px 4px hsl(0, 79%, 72%, 0.9); 
+    padding-left: 1vw;
+    padding-right: 3px;
+}
+
+.resultDiv div div div{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    margin-right: 3px;
+}
+
+
+.resultDiv div:focus{
+    outline: none;
+}
+
+.resultDiv div::-webkit-scrollbar{
+    width: 8px;
+}
+
+.resultDiv div::-webkit-scrollbar-thumb{
+    background-color: hsl(0, 35%, 59%, 0.8);
+    border-radius: 1.2vh;
+}
+
+.totalFiles{
+    color: #fff;
+    background-color: hsl(240, 81%, 75%); 
+    box-shadow: 1px 1px 2px gray;
+    padding: 1px;
+    margin-bottom: 2px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.fullFileNameToolkit{
+    font-size: 14px;
+    bottom: -36px;
+    text-wrap: wrap;
+    display: none;
+    align-items: center;
+    padding-left: 4px;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80%;
+    z-index: 5;
+    background-color: hsl(0, 0%, 100%, 0.95);
+    color: gray;
+}
+
+.lastFullFileNameToolkit{
+    font-size: 14px;
+    text-wrap: wrap;
+    top: -36px;
+    display: none;
+    align-items: center;
+    padding-left: 4px;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80%;
+    z-index: 5;
+    background-color: hsl(0, 0%, 100%, 0.95);
+    color: gray;
+}
+
+.noResult{
+    flex: 1;
+    margin-top: -15px;
+    width: 30vw;
+    min-width: 300px;
+    max-height: 65vh;
+    padding-top: 10vh;
+    color: hsl(0, 0%, 40%);
+    background-color: rgb(255, 222, 222);
+    border-radius: 10px;
+}
+
+.noResult div{
+    text-align: center;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+.fileBtnDiv button{
+    border: none;
+    background-color: transparent;
+    opacity: 0.75;
+    box-shadow: 1px 1px 1px gray;
+}
+
+
+#confirmDelete{
+    position: absolute;
+    align-items: center;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: none;
+    padding-left: 2px;
+    z-index: 31;
+    column-gap: 5px;
+    background-color: #333;
+}
+
+#confirmDelete input{
+    flex: 1;
+    height: 25px;
+    padding: 0 5px;
+    border: none;
+    border-radius: 8px;
+}
+
+#confirmDelete input:focus{
+    outline: 2px solid hsl(0, 100%, 72%, 0.95);
+}
+
+#confirmDelete span{
+    display: flex;
+    width: 55px;
+    border: none;
+    column-gap: 2px;
+    border-right: 5px solid #333;
+    margin-right: -2px;
+}
+
+#confirmDelete span button{
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-content: center;
+    border: none;
+    background-color: transparent;
+}

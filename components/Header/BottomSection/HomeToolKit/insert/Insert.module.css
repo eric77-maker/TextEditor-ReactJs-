@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+    column-gap: 2vw;
+    height: 100%;
+}
+
+
+.iTextLight{
+    color: hsl(0, 0%, 40%);
+}
+
+.iTextDark{
+    color: #fff;
+}

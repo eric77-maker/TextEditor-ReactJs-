@@ -1,0 +1,82 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    border-right: 1px solid hsla(249, 53%, 90%, 0.8);
+    padding: 0 1vw;
+    height: 100%;
+}
+
+.btn{
+    display: grid;
+    place-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    opacity: 0.85;
+    border: 1px solid hsl(240, 94%, 87%);
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.container p{
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+.btnContainer{
+    margin-top: 2.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 2px;
+    row-gap: 2px;
+}
+
+
+.textLight{
+    color: hsl(240, 15%, 40%, 0.9);
+}
+.textDark{
+    color: #fff;
+}
+
+.color{
+    display: none;
+    position: absolute;
+    width: 95px;
+    top: 2px; 
+    height: 14px;
+    left: -4.5vw;
+    color: #343;
+    background-color: #fff;
+    border: 1px solid rgb(243, 238, 238);
+    border-radius: 5px;
+    padding: 0 10px 0 3px;
+    font-size: 10px;
+    box-shadow: 1px 1px 1.5px hsl(240, 100%, 92%);
+}
+
+.color::placeholder{
+    color: hsl(240, 100%, 85%);
+}
+
+
+.color:focus{
+    outline: none;
+}
+
+
+.insertColorBtn{
+    position: absolute;
+    top: 0.55vh;
+    right: -0.75vw;
+    height: 11.5px;
+    width: 11.5px;
+    display: none;
+    place-content: center;
+    border: none;
+    background-color: transparent;
+}

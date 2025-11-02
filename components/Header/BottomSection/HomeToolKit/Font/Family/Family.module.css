@@ -1,0 +1,44 @@
+.btn{
+    display: grid;
+    place-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    opacity: 0.85;
+    border: 1px solid hsl(240, 94%, 87%);
+    border-radius: 5px;
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover{
+    background-color: aliceblue;
+}
+
+#fontFamilyBtn{
+    position: relative;
+    z-index: 10;
+}
+
+#fontFamilyBtn input{
+    color: #343;
+    position: absolute;
+    width: 11vw;
+    min-width: 100px;
+    background-color: #fff;
+    left: -3.2vw;
+    height: 17px;
+    top: 15%;
+    border: none;
+    border-radius: 5px;
+    padding: 0 2.5px;
+    font-size: 10px;
+    box-shadow: 1.5px 1.5px 2px hsl(240, 94%, 87%);
+}
+#fontFamilyBtn input::placeholder{
+    color: hsl(240, 100%, 75%);
+}
+
+#fontFamilyBtn input:focus{
+    outline: none;
+}
