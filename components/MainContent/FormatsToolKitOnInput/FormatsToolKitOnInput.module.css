@@ -1,0 +1,144 @@
+#formatsToolKit{
+    position: absolute;
+    max-width: 240px;
+    width: fit-content;
+    min-width: 115px;
+    max-height: 60px;
+    height: fit-content;
+    min-height: 55px;
+    padding: 1vh 1vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+    column-gap: 1vw;
+    justify-content: space-evenly;
+    z-index: 10;
+}
+
+#formatsToolKit div{
+    display: flex;
+    column-gap: 1vw;
+}
+
+
+
+#startFadingAnim{
+    animation-name: fade;
+    animation-duration: 5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+    position: absolute;
+    max-width: 240px;
+    width: fit-content;
+    min-width: 115px;
+    max-height: 60px;
+    height: fit-content;
+    min-height: 55px;
+    padding: 1vh 1vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1vh;
+    column-gap: 1vw;
+    justify-content: space-evenly;
+    z-index: 10;
+}
+
+#startFadingAnim div{
+    display: flex;
+    column-gap: 1vw;
+}
+
+
+@keyframes fade {
+    0%{
+        opacity: 1;
+    }
+
+    25%{
+        opacity: 0.75;
+    }
+
+    50%{
+        opacity: 0.50;
+    }
+
+    75%{
+        opacity: 0.25;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+.formatsToolKitLight{
+    background-color: rgb(238, 245, 250);
+    border: 1px solid hsl(0, 17%, 75%);
+}
+
+.formatsToolKitDark{
+    border: 1px solid hsl(240, 46%, 80%);
+    background-color: rgb(247, 235, 219);
+}
+
+.btnDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnDiv button{
+    display: grid;
+    place-content: center;
+    max-width: 1.7vw;
+    width: 1.7vw;
+    min-width: 15px;
+    max-height: 1.7vw;
+    min-height: 15px;
+    border: 1px solid hsl(240, 100%, 82%);
+    border-radius: 3px;
+    padding: 2px;
+    background-color: #fff;
+}
+
+.btnDiv button img{
+    width: 95%;
+    height: 95%;
+}
+
+
+.fontSizeBtn{
+    position: relative;
+}
+
+.sizesDiv{
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    border: 1px solid hsl(240, 38%, 70%);
+    row-gap: 3px;
+    border-radius: 2px;
+    background-color: aliceblue;
+}
+
+.sizesDiv span{
+    background-color: hsl(220, 5%, 95%);
+    color: hsl(240, 11%, 51%);
+    display: grid;
+    place-content: center;
+    border: none;
+    border-top: 1px solid hsl(240, 38%, 60%);
+    border-bottom: 1px solid hsl(240, 38%, 60%);
+    border-radius: 2px;
+    padding: 1px 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.sizesDiv span:hover{
+    color: #fff;
+    background-color: hsl(240, 11%, 51%);
+}

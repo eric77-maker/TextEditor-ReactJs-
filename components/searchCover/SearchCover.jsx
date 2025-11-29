@@ -58,31 +58,87 @@ export default function SearchCover(){
     }, []);
 
     const readFileHandler = file =>{
-        if(contextObj.readFileRef.current === null){
-            contextObj.readFileRef.current = file;
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
-        }else{
-            contextObj.readFileRef.current = file;
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read', reRenderReadComp: !c.reRenderReadComp}));
-        };
+        if(!contextObj.madeChangesRef.current){
+            if(contextObj.readFileRef.current !== null){
+                if(contextObj.componentMountToggler.actionContent === 'read'){
+                    if(contextObj.readFileRef.current.fileName !== file.fileName){
+                        contextObj.readFileRef.current = file;
+                        contextObj.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.createEditContentRef.current = {from: '', content: ''};
+                        contextObj.setToggleSearch(false); 
+                    }else{  
+                        window.alert('that is the current file you are reading!');
+                    };
+                };
+    
+                if(contextObj.componentMountToggler.actionContent === 'edit'){
+                    if(contextObj.readFileRef.current.fileName !== file.fileName){
+                        contextObj.readFileRef.current = file;
+                        contextObj.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    }else{
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    };
+                    contextObj.createEditContentRef.current = {from: '', content: ''}; 
 
-        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
-        contextObj.setToggleSearch(false)
-        contextObj.createEditContentRef.current = {from: '', content: ''};
+                    contextObj.setToggleSearch(false); 
+                };
+            }else{
+                contextObj.readFileRef.current = file;
+                contextObj.fileToEditRef.current = file;
+                contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                contextObj.createEditContentRef.current = {from: '', content: ''};  
+                contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                contextObj.setToggleSearch(false); 
+            };
+        }else{
+            contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file };
+
+            if(contextObj.wasGoingToAfterEditRef.current !== 'read'){
+                contextObj.wasGoingToAfterEditRef.current = 'read';
+            };
+            
+            !contextObj.promptWithoutSavingChangesOnEdit && contextObj.setPromptWithoutSavingChangesOnEdit(true); 
+        };
     };
 
     const editFileHandler = file =>{
-        if(contextObj.fileName.fileName !== file.fileName){
-            contextObj.createEditContentRef.current = {from: '', content: ''};
-            contextObj.fileToEditRef.current = file;
-            contextObj.readFileRef.current = file;
-            contextObj.setFileName(f => ({...f, fileName: file.fileName}));
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'edit', reRenderReadComp: !c.reRenderReadComp}));
-        }else{
-            contextObj.setFileName(f => ({...f, from: 'edit'}))
-        };
+        if(!contextObj.madeChangesRef.current){
+            if(contextObj.fileName.fileName !== file.fileName){
+                contextObj.createEditContentRef.current = {from: '', content: ''};
+                contextObj.fileToEditRef.current = file;
+                contextObj.readFileRef.current = file;
+                contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                contextObj.componentMountToggler.actionContent !== 'edit' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'edit'}));
 
-        contextObj.setToggleSearch(false);
+                contextObj.setToggleSearch(false)
+            }else{
+                if(contextObj.componentMountToggler.actionContent === 'edit'){
+                    window.alert('that is the current file you ate editing');
+                };
+            };
+    
+            if(contextObj.fileName.fileName === file.fileName && contextObj.componentMountToggler.actionContent === 'read'){
+                contextObj.setComponentMountToggler(c => ({...c, actionContent: 'edit'}));
+                contextObj.setToggleSearch(false)
+            };
+     
+        }else{
+            if(contextObj.fileToEditRef.current.fileName !== file.fileName){
+                contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file };
+
+                if(contextObj.wasGoingToAfterEditRef.current !== 'edit'){
+                    contextObj.wasGoingToAfterEditRef.current = 'edit';
+                };
+    
+     
+                !contextObj.promptWithoutSavingChangesOnEdit && contextObj.setPromptWithoutSavingChangesOnEdit(true);
+            }else{
+                window.alert('that is the current file you are editing');
+            };
+        };
     };
 
     const cancelFileDeletionHandler = index =>{
@@ -96,6 +152,7 @@ export default function SearchCover(){
     };
 
     const confirmFileDeletionHandler = (id, File) =>{
+    
         const removeFileFromFileStore = contextObj.filesStoreRef.current.filter((file, index) =>{
             if(file.fileName !== File.fileName){
                 return file;
@@ -114,12 +171,11 @@ export default function SearchCover(){
             };
         });
 
-        if(window.frames['editTextInput'] && contextObj.fileToEditRef.fileName === File.fileName && contextObj.fileToEditRef.id == id){
-            window.frames['editTextInput'].document.body.innerHTML = '';
-        };
+        if(contextObj.readFileRef.current !== null){
+            if(contextObj.readFileRef.current.fileName == File.fileName && contextObj.readFileRef.current.id === id){
+                contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
 
-        if(contextObj.readFileRef.current.fileName == File.fileName && contextObj.readFileRef.current.id === id){
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
+            };
         };
 
 

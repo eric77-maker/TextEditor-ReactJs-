@@ -15,64 +15,61 @@ export default function Align(){
     const contextObj = useContext(ContextObj);
 
     const handleIndent = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('indent', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('indent', false, null);
 
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('indent', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
     const handleOutdent = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('outdent', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('outdent', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('outdent', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 
     const handleAlignLeft = () =>{
-
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('JustifyLeft', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('JustifyLeft', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('JustifyLeft', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
-        };
-        
     };
 
     const handleAlignCenter = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('JustifyCenter', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('JustifyCenter', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('JustifyCenter', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
-        };
-        
     };
 
     const handleAlignRight = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('JustifyRight', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('JustifyRight', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('JustifyRight', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 

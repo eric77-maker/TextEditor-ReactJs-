@@ -1,5 +1,5 @@
 import styles from './SideBarDropDown.module.css';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { ContextObj } from '../../TextEditor/TextEditor';
 import showSideBarImg from '/src/assets/SideBarImgs/sidebarCollapse.png';
 import trashImgLight from '/src/assets/SideBarImgs/trashImgLight.svg';
@@ -15,37 +15,64 @@ export default function SideBarDropDown(props){
     const contextObj = useContext(ContextObj);
     const [showSideBar, setShowSideBar] = useState(false);
 
-    const unmountToolKit = () =>{
-        if(contextObj.componentMountToggler.toolKit === 'home' || contextObj.componentMountToggler.toolKit === 'insert'){
-            contextObj.setComponentMountToggler(c => ({...c, toolKit: ''}));
-        }
-    };
-
+    useEffect(() => {
+        console.log('re-rendered SideBarDrop...');
+    }, []);
+    
     const readFileHandler = file =>{
-        props.readFileRef.current = file;
-        props.fileToEditRef.current = file;
-        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
-        //contextObj.totalPagesRef.current = null;
-        contextObj.createEditContentRef.current = {from: '', content: ''}; 
+        if(!contextObj.madeChangesRef.current){
+            if(props.readFileRef.current !== null){
+                if(contextObj.componentMountToggler.actionContent === 'read'){
+                    if(props.readFileRef.current.fileName !== file.fileName){
+                        props.readFileRef.current = file;
+                        props.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.createEditContentRef.current = {from: '', content: ''}; 
+                    }else{  
+                        window.alert('that is the current file you are reading!');
+                    };
+                };
+    
+                if(contextObj.componentMountToggler.actionContent === 'edit'){
+                    if(props.readFileRef.current.fileName !== file.fileName){
+                        props.readFileRef.current = file;
+                        props.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    }else{
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    };
 
-        if(props.readFileRef.current === null){
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    contextObj.createEditContentRef.current = {from: '', content: ''}; 
+                };
+            }else{
+                props.readFileRef.current = file;
+                props.fileToEditRef.current = file;
+                contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                contextObj.createEditContentRef.current = {from: '', content: ''};  
+                contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+            };
         }else{
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read', reRenderReadComp: !c.reRenderReadComp}));
+            contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file };
+ /*            if(contextObj.lastCurrentPageRef.current > 1 && contextObj.lastCurrentPageRef.current !== contextObj.fileToEditRef.current.editLastCurrentPage){
+                contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file , hasEditLastCurrentPage: true};
+            }else{
+                contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file , hasEditLastCurrentPage: false};
+            };     */
+    
+            
+            if(contextObj.wasGoingToAfterEditRef.current !== 'read'){
+                contextObj.wasGoingToAfterEditRef.current = 'read';
+            };
+            !contextObj.promptWithoutSavingChangesOnEdit && contextObj.setPromptWithoutSavingChangesOnEdit(true);
         };
     };
 
     const removeFileFromStore = (id, fileName) =>{
-        if(fileName === props.fileToEditRef.current.fileName){
-            props.fileToEditRef.current = {fileName: '', content: ''};
-        };
-
-        if(window.frames['editTextInput'] && props.fileToEditRef.current.fileName === fileName && props.fileToEditRef.current.id == id){
-            window.frames['editTextInput'].document.body.innerHTML = '';
-        };
-
-        if(props.readFileRef.current.fileName == fileName && props.readFileRef.current.id === id){
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
+        if(contextObj.readFileRef.current !== null){
+            if(contextObj.readFileRef.current.fileName === fileName){
+                contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
+            };
         };
 
         const newRecentFiles = contextObj.recentFiles.filter((file, index) =>{

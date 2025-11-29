@@ -1,3 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    column-gap: 10px;
+    padding: 0 1vw 0 0 ;
+    border-right: 1px solid hsla(249, 53%, 90%, 0.8);
+}
+
 .btn{
     display: grid;
     place-content: center;
@@ -16,13 +27,11 @@
 }
 
 
-.scritpText{
+.scriptTextDiv{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     row-gap: 5px;
-    padding: 0 1vw 0 0 ;
-    border-right: 1px solid hsla(249, 53%, 90%, 0.8);
 }

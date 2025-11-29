@@ -12,14 +12,13 @@ export default function Paragraph(){
     const contextObj = useContext(ContextObj);
 
     const handleInsertParagraph = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('insertParagraph', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('insertParagraph', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('insertParagraph', false, null);
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            }
         };
     };
     return(

@@ -16,29 +16,102 @@
 }
 
 #fontFamilyBtn{
-    position: relative;
     z-index: 10;
 }
 
-#fontFamilyBtn input{
-    color: #343;
-    position: absolute;
-    width: 11vw;
-    min-width: 100px;
-    background-color: #fff;
-    left: -3.2vw;
-    height: 17px;
-    top: 15%;
-    border: none;
+#container section{
+    font-size: 14px;
+    position: fixed;
+    border: 2px solid #fff;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    top: 21vh;
+    right: 10.5vw;
+    row-gap: 0.5vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 0.2vh 0;
+    min-width: 18vw;
+    max-width: 250px;
+    background-color: transparent;
     border-radius: 5px;
-    padding: 0 2.5px;
-    font-size: 10px;
-    box-shadow: 1.5px 1.5px 2px hsl(240, 94%, 87%);
-}
-#fontFamilyBtn input::placeholder{
-    color: hsl(240, 100%, 75%);
 }
 
-#fontFamilyBtn input:focus{
-    outline: none;
+#fontFamiliesFadeOut{
+    animation-name: fadeOut;
+    animation-duration: 5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+    }
+
+    25%{
+        opacity: 0.75;
+    }
+
+    50%{
+        opacity: 0.50;
+    }
+
+    75%{
+        opacity: 0.25;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+#container section button{
+    display: grid;
+    place-content: center;
+    border: 1px solid hsl(240, 13%, 73%);
+    width: 100%;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#fontBtnLight{
+    color: hsla(120, 4%, 34%, 0.8);
+    background-color: #fff;
+}
+
+#fontBtnDark{
+    color: hsl(240, 13%, 53%);
+    background-color: hsl(0, 0%, 89%);
+}
+
+#fontBtnDark:hover{
+    color: #fff;
+    background-color: hsl(240, 12%, 57%);
+}
+
+
+#fontBtnLight:hover{
+    color: #fff;
+    background-color: hsl(280, 7%, 84%);
+}
+
+#container section::-webkit-scrollbar{
+    width: 5px;
+}
+
+#container section::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+#container section::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom, hsl(0, 0%, 30%), hsl(240, 21%, 75%), hsl(240, 21%, 81%), hsl(240, 21%, 87%));
+    border-radius: 5px;
+}
+
+#container section::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, hsl(0, 0%, 25%), hsl(240, 21%, 70%), hsl(240, 21%, 76%), hsl(240, 21%, 82%));
 }

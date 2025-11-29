@@ -1,5 +1,5 @@
 import styles from './ConfirmSaveFileCover.module.css';
-import { useState,useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { ContextObj } from '../../../../TextEditor/TextEditor';
 import loadingImg from '/src/assets/MainComponentImgs/ConfirmSaveFile/loading.webp';
 
@@ -11,68 +11,64 @@ export default function ConfirmSaveFileCover(props){
     const [fileNameExists, setFileNameExists] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const tokenRef = useRef(null);
+    const confirmSaveFileDivRef = useRef(null);
 
     useEffect(() =>{
         inputRef.current.focus();
     }, []);
 
+
     const addFileToFilesStoreHandler = () =>{
-        if(window.frames['createTextInput'] && window.frames['createTextInput'].document.body.innerHTML.length > 0){
-            const fileName = inputRef.current.value;
-            const newFileContent = window.frames['createTextInput'].document.body.innerHTML;
-            const totalPages = Math.round(createTextInput.document.body.scrollHeight / createTextInput.document.body.clientHeight);
-            const liColor = contextObj.lastChosenColorForLIMarker.current;
+        if(document.getElementById('createTextInput') !== null && document.getElementById('createTextInput').innerHTML.length > 0){
+            const inputValue = inputRef.current.value;
+            let newFile;
+            let fileName;
+            const newFileContent = document.getElementById('createTextInput').innerHTML;
+            const totalPages = Math.round(document.getElementById('createTextInput').scrollHeight / document.getElementById('createTextInput').clientHeight);
 
-            if(fileName){
-                const newFile = {id: contextObj.filesStoreRef.current.length, fileName, content: newFileContent, liColor , totalPages: totalPages};
-                contextObj.filesStoreRef.current = [...contextObj.filesStoreRef.current, newFile];
-                const makeFileMostRecent = contextObj.recentFiles;
-                contextObj.recentFiles.length > 0 && makeFileMostRecent.unshift(newFile);
-                
-
-                if(makeFileMostRecent.length > 25){
-                    const sliceRecentFiles = makeFileMostRecent.slice(0, 26);
-                    contextObj.setRecentFiles(sliceRecentFiles);
-                }else{
-                    contextObj.recentFiles.length < 1 && contextObj.setRecentFiles(r => [...r, newFile]);
-                    contextObj.recentFiles.length > 0 && contextObj.setRecentFiles(makeFileMostRecent);
-                };
+            if(inputValue.trim() !== ''){
+                fileName = inputRef.current.value;
             
             }else{
-                const fileName = `file${contextObj.numberOfUnNamedFileRef.current + 1}`;
-                const newFile = {id: contextObj.filesStoreRef.current.length, fileName, content: newFileContent, liColor , totalPages: totalPages};
-                contextObj.filesStoreRef.current = [...contextObj.filesStoreRef.current, newFile];
-                const makeFileMostRecent = contextObj.recentFiles;
-                contextObj.recentFiles.length > 1 && makeFileMostRecent.unshift(newFile);
-
-                if(makeFileMostRecent.length > 25){
-                    const sliceRecentFiles = makeFileMostRecent.slice(0, 26);
-                    contextObj.setRecentFiles(sliceRecentFiles);
-                }else{
-                    contextObj.recentFiles.length < 1 && contextObj.setRecentFiles(r => [...r, newFile]);
-                    contextObj.recentFiles.length > 1 && contextObj.setRecentFiles(makeFileMostRecent);
-                };
-
+                fileName = `file${contextObj.numberOfUnNamedFileRef.current + 1}`;
                 contextObj.numberOfUnNamedFileRef.current = contextObj.numberOfUnNamedFileRef.current + 1;
             };
+
+            newFile = {id: contextObj.filesStoreRef.current.length, triggeredFSWhenCreatingFile: props.triggeredFSWhenCreatingFileRef.current,
+                       fileName, content: newFileContent , totalPages: totalPages, readLastCurrentPage: '', editLastCurrentPage: ''};
+
+            const makeFileMostRecent = contextObj.recentFiles;
+            contextObj.recentFiles.length > 0 && makeFileMostRecent.unshift(newFile);
+
+            contextObj.filesStoreRef.current = [...contextObj.filesStoreRef.current, newFile];
+
+            if(makeFileMostRecent.length > 25){
+                const sliceRecentFiles = makeFileMostRecent.slice(0, 26);
+                contextObj.setRecentFiles(sliceRecentFiles);
+            }else{
+                contextObj.recentFiles.length < 1 && contextObj.setRecentFiles(r => [...r, newFile]);
+                contextObj.recentFiles.length > 0 && contextObj.setRecentFiles(makeFileMostRecent);
+            };
+        
             
+            contextObj.lastChosenColorForLIMarker !== '' && contextObj.setLastChosenColorForLIMarker('');
             props.setPages({current: 1, totalPages: 1});
-            contextObj.totalPagesRef.current = null;
-            contextObj.lastChosenColorForLIMarker.current = '';
-            contextObj.setComponentMountToggler(c => ({...c, toolKit: ''}));
+            contextObj.totalPagesRef= '';
             contextObj.createEditContentRef.current = {from: '', content: ''};
             contextObj.setToggleConfirmSaveFile('hide');
-            window.frames['createTextInput'].document.body.innerHTML = '';
+            document.getElementById('createTextInput').innerHTML = '';
         }else{
             window.alert('no content to save to file store!')
         }
     };
+
 
     const cancelSaveFileHandler = () =>{
         contextObj.setToggleConfirmSaveFile('hide');
     };
 
     const checkFileNameExistHandler = e =>{
+
         if(!isLoading){
             setIsLoading(true);
         };
@@ -97,9 +93,8 @@ export default function ConfirmSaveFileCover(props){
         }, 1000)
     };
 
-
     return(
-        <div className={styles.confirmSaveDiv}>
+        <div id={styles.confirmSaveDiv} ref={confirmSaveFileDivRef}>
         <div className={styles.confirmSaveDivCompDiv}>
             <div className={styles.confirmFileNameInputDiv}>
                 <input onChange={e => checkFileNameExistHandler(e)} ref={inputRef} placeholder='type file name here!' type="text" className={styles.confirmFileNameInput} />
@@ -115,16 +110,16 @@ export default function ConfirmSaveFileCover(props){
                 </button>
             </div>
 
-            {isLoading && <p style={{color: contextObj.modeState =='light'? '#334' : '#fff', marginTop: '3px'}}>validating...</p>}
+            {isLoading && <p style={{color: 'purple', marginTop: '3px'}}>validating...</p>}
 
             {fileNameExists === false && !isLoading &&
-                <p style={{color: contextObj.modeState =='light'? 'blue' : '#fff', marginTop: '0.8vh', fontSize: '12px'}}>
+                <p style={{color: 'blue', marginTop: '0.8vh', fontSize: '12px'}}>
                     file name can be used!
                 </p>
             }
 
             {fileNameExists && !isLoading &&
-                <p style={{color: 'hsl(0, 100%, 78%)', marginTop: '0.8vh', fontSize: '12px'}}>
+                <p style={{color: 'rgb(236, 110, 110)', marginTop: '0.8vh', fontSize: '12px'}}>
                     file name already in use!
                 </p>
             }

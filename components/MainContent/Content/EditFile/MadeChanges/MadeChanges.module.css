@@ -1,0 +1,506 @@
+.container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    padding-top: 10vh;
+    background-color: hsl(0, 41%, 67%, 0.25);
+    left: 0;
+    right: 0;
+    border-radius: 1vh;
+    z-index: 12;
+}
+
+
+#title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0.5vh 0.5vw;
+    border: none;
+    color: #fff;
+    background-color: hsl(0, 41%, 67%, 0.85);
+    border-radius: 5px;
+}
+
+.savingChangesDiv{
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0.5vh 0.5vw;
+    color: #fff;
+    background-color: hsla(240, 13%, 60%, 0.9);
+}
+
+.animH1 span{
+    transition: 0.1s ease-in-out;
+}
+
+
+.animH1 span:first-child{
+    animation-name: slide1;
+    animation-delay: 0.25s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide1{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+
+.animH1 span:nth-child(2){
+    animation-name: slide2;
+    animation-delay: 0.5s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide2{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+
+.animH1 span:nth-child(3){
+    animation-name: slide3;
+    animation-delay: 0.75s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide3{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(4){
+    animation-name: slide4;
+    animation-delay: 1s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide4{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(5){
+    animation-name: slide5;
+    animation-delay: 1.25s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes side5{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(6){
+    animation-name: slide6;
+    animation-delay: 1.50s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes  slide6{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(7){
+    animation-name: slide7;
+    animation-delay: 1.75s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide7{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(8){
+    animation-name: slide8;
+    animation-delay: 2s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide8{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(9){
+    animation-name: slide9;
+    animation-delay: 2.25s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide9{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(10){
+    animation-name: slide10;
+    animation-delay: 2.5s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide10{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(11){
+    animation-name: slide11;
+    animation-delay: 2.75s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide11{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(12){
+    animation-name: slide12;
+    animation-delay: 3s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide12{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(13){
+    animation-name: slide13;
+    animation-delay: 3.25s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide13{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(14){
+    animation-name: slide14;
+    animation-delay: 3.50s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide14{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(15){
+    animation-name: slide15;
+    animation-delay: 3.75s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide15{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(16){
+    animation-name: slide16;
+    animation-delay: 4.0s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide16{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(17){
+    animation-name: slide17;
+    animation-delay: 4.25s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide17{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(18){
+    animation-name: slide18;
+    animation-delay: 4.50s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide18{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:nth-child(19){
+    animation-name: slide19;
+    animation-delay: 4.75s;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes slide19{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.animH1 span:last-child{
+    animation-name: slide20;
+    animation-delay: 4.90;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes silde20{
+    0%{
+        color: blue;
+    }
+
+    10%{
+        color: #fff;
+    }
+
+    100%{
+        color: #fff;
+    }
+}
+
+.saveChangesDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    margin: 1vh 0;
+    height: 10vh;
+}
+
+.saveChangesDiv button{
+    width: 40%;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.saveChangesDiv button img{
+    width: 90%;
+    height: auto;
+}
+
+.saveChangesDiv p{
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.5vw 0.5vw;
+    color: blue;
+    text-decoration: underline;
+}
+
+.orDiv p{
+    color: hsl(240, 6%, 35%);
+}
+
+.discardDiv{
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    padding: 0 1vw;
+    height: 10vh;
+}
+
+
+.discardDiv button{
+    width: 40%;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.discardDiv button img{
+    width: 90%;
+    height: auto;
+}
+
+
+.discardDiv p{
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}

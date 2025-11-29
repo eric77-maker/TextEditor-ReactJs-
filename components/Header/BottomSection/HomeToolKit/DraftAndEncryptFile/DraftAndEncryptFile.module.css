@@ -1,0 +1,37 @@
+.container{
+    background: linear-gradient(to right, hsl(240, 11%, 96%), hsl(240, 11%, 86%), hsl(240, 11%, 76%));
+    flex: 1;
+    height: 100%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.container div{
+    color: #fff;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.18s ease-in;
+}
+
+.container div:first-child{
+    border-bottom: none;
+    box-shadow: 2px 0 1px hwb(240 76% 20%);
+}
+
+.container div:last-child{
+    background-color: hsl(240, 11%, 86%);
+}
+
+
+.container div p{
+    font-size: 1rem;
+}

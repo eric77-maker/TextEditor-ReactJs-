@@ -12,14 +12,13 @@ export default function Rule(){
     const contextObj = useContext(ContextObj);
 
     const handleInsertHorizontalRule = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('insertHorizontalRule', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('insertHorizontalRule', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('insertHorizontalRule', false, null);
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            }
         };
     };
 
@@ -28,8 +27,8 @@ export default function Rule(){
             <button onClick={() =>handleInsertHorizontalRule()} className={styles.btn}>
                 <img src={horizontalRuleImg} alt="" width={20} height={20}/>
             </button>
-            <p className={contextObj.modeState === 'light'? styles.textLight : styles.textDark}>
-                Hn. Rule
+            <p style={{textWrap: 'nowrap'}} className={contextObj.modeState === 'light'? styles.textLight : styles.textDark}>
+                Hn. Line
             </p>
         </div>
     );

@@ -1,4 +1,5 @@
 #container{
+    position: relative;
     flex: 0.3;
     display: flex;
     flex-direction: column;
@@ -55,7 +56,35 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding: 1vh 1vw;
-    max-height: 75vh;
+}
+
+.addToRecentOnHomeToolKit{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.8vh;
+    left: 0.2vw;
+    right: 0.2vw;
+}
+
+.addToRecentOnHomeToolKit button{
+    color: #fff;
+    background-color: hsl(240, 21%, 53%);
+    background-color: hsl(240, 8%, 56%);
+    border-radius: 0.5vh;
+    border-left: 1px solid hsl(240, 83%, 88%);
+    border-top: 1px solid hsl(0, 80%, 86%);
+    border-right: 1px solid hsl(39, 84%, 83%);
+    border-bottom: 1px solid hsl(120, 100%, 87%);
+    width: 45px;
+    cursor: pointer;
+}
+
+.addToRecentOnHomeToolKit button:hover{
+    background-color: #fff;
+    background-color: aliceblue;
+    color: hsl(240, 21%, 53%);
+    color: blue;
 }
 
 .containerLight #filesDiv{
@@ -64,7 +93,8 @@
 }
 
 .containerDark #filesDiv{
-    background-color: hsl(0, 0%, 35%); 
+    background-color: hsl(0, 0%, 35%);
+    background-color:  hsl(0, 0%, 50%, 0.8); 
     color: #fff;
 }
 
@@ -158,7 +188,7 @@
     color: hsla(0, 0%, 65%, 0.7);
 }
 .noFilesDark{
-    color: gray;
+    color: aliceblue;
 }
 
 

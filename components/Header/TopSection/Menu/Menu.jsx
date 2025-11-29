@@ -12,7 +12,7 @@ export default function Menu(props){
     };
 
     const addFileToFilesStore = () =>{
-        if(window.frames['createTextInput'] && window.frames['createTextInput'].document.body.innerHTML.length > 0){
+        if(document.getElementById('createTextInput') !== null && document.getElementById('createTextInput').innerHTML.length > 0){
             contextObj.setToggleConfirmSaveFile('show');
         }else{
             window.alert('no content to save to file store!')
@@ -20,30 +20,28 @@ export default function Menu(props){
     };
 
     const redoLastAction = () =>{
-        if(window.frames['createTextInput'] && window.frames['createTextInput'].document.body.innerHTML.length > 0){
-            createTextInput.document.execCommand('redo', false, null);
+        if(document.getElementById('createTextInput') !== null && document.getElementById('createTextInput').innerHTML.length > 0){
+            window.document.execCommand('redo', false, null);
         };
 
-        if(window.frames['editTextInput'] && window.frames['editTextInput'].document.body.innerHTML.length > 0){
-            editTextInput.document.execCommand('redo', false, null);
+        if(document.getElementById('editTextInput') !== null && document.getElementById('editTextInput').innerHTML.length > 0){
+            window.document.execCommand('redo', false, null);
         }
     };
 
     const undoLastAction = () =>{
-        if(window.frames['createTextInput'] && window.frames['createTextInput'].document.body.innerHTML.length > 0){
-            createTextInput.document.execCommand('undo', false, null);
+        if(document.getElementById('createTextInput') !== null && document.getElementById('createTextInput').innerHTML.length > 0){
+            window.document.execCommand('undo', false, null);
         };
 
-        if(window.frames['editTextInput'] && window.frames['editTextInput'].document.body.innerHTML.length > 0){
-            editTextInput.document.execCommand('undo', false, null);
+        if(document.getElementById('editTextInput') !== null && document.getElementById('editTextInput').innerHTML.length > 0){
+            window.document.execCommand('undo', false, null);
         };
     };
 
     const printDocumentHandler = () =>{
-        if(window.frames['createTextInput'] && window.frames['createTextInput'].document.body.innerHTML.length > 0){
-            createTextInput.document.execCommand('print', false, null);
-        }else if(window.frames['editTextInput'] && window.frames['editTextInput'].document.body.innerHTML.length > 0){
-            editTextInput.document.execCommand('print', false, null);
+        if(window.frames['textToPrint'] && window.frames['textToPrint'].document.body.innerHTML.length > 0){
+            textToPrint.document.execCommand('print', false, null);
         }else{
             alert('no content to print');
         };

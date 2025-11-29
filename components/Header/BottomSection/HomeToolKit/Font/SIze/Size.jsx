@@ -10,17 +10,15 @@ export default function Size(){
     const contextObj = useContext(ContextObj);
     
     const handleSetFontSize = size =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('FontSize', false, size);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('FontSize', false, size);
+
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('FontSize', false, size);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
-        };
-
-
         document.getElementById('fontSize').value = '';
     };
 

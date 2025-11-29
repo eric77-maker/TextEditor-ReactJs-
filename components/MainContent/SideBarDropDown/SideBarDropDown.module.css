@@ -4,8 +4,9 @@
     flex-direction: column;
     position: absolute;
     left: 1.5vw;
-    top: 4.5vh;
+    top: 4.66vh;
     bottom: 5vh;
+    bottom: 0;
     background-color: transparent;
     border: none;
     z-index: 20;
@@ -36,7 +37,7 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding: 5vh 1vw;
-    max-height: 75vh;
+    max-height: 76.5vh;
 }
 
 .containerLight #filesDiv{

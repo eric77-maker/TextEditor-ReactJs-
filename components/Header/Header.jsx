@@ -9,6 +9,7 @@ const Header = memo(
     function(props){
         const contextObj = useContext(ContextObj);
 
+        console.log('re-rendered Header...');
         return(
             <header className={styles.container}>
                 <TopSection />

@@ -9,13 +9,13 @@ import Underline from './Underline/Underline';
 
 
 
-export default function Font(){
+export default function Font(props){
     const [hideFontInput, setHideFontInput] = useState(true);
 
     return(
         <div className={styles.fontDiv}>
             <div>
-                <Family hideFontInput={hideFontInput} setHideFontInput={setHideFontInput} />
+                <Family />
                 <Size setHideFontInput={setHideFontInput} />
                 <Color setHideFontInput={setHideFontInput} />
             </div>

@@ -1,6 +1,7 @@
 import styles from './List.module.css';
 import orderedListImg from '/src/assets/InsertToolKitImgs/orderedList.png';
 import unorderedListImg from '/src/assets/InsertToolKitImgs/unorderedList.png';
+import pointToListImg from '/src/assets/InsertToolKitImgs/upArrow.png';
 import insertLIColorImg from '/src/assets/InsertToolKitImgs/insertLink.png';
 import {useState, useEffect, useRef, useContext } from 'react';
 import { ContextObj } from '../../../../../TextEditor/TextEditor';
@@ -13,7 +14,36 @@ export default function List(){
     const contextObj = useContext(ContextObj);
     const idleTokenRef = useRef(null);
     const [color, setColor] = useState('');
+    const onMountTimeOutTokenRef = useRef(null);
+    const startAnimationTokenRef = useRef(null);
+    const [startedAnim, setStartedAnim] = useState(false);
+    const [toggleAnimation, setToggleAnimation] = useState(false);
     const triggeredBeforeOnInitialRef = useRef(false); 
+
+    useEffect(() => {
+        onMountTimeOutTokenRef.current = setTimeout(() => {
+            setStartedAnim(true)
+        }, 60000);
+
+
+        return () => {
+            onMountTimeOutTokenRef.current !== null && clearTimeout(onMountTimeOutTokenRef.current);
+        };
+    }, []);
+
+    useEffect(() => {
+        startAnimationTokenRef.current === null && startedAnim && setToggleAnimation(t => !t);
+
+        if(startedAnim){
+            startAnimationTokenRef.current = setInterval(() => {
+                setToggleAnimation(t => !t);
+            }, 180000 );
+        };
+
+        return () => {
+            startAnimationTokenRef.current !== null && clearInterval(startAnimationTokenRef.current);
+        };
+    }, [startedAnim]);
 
     useEffect(() => {
         if(idleTokenRef.current === null && triggeredBeforeOnInitialRef.current){
@@ -25,109 +55,43 @@ export default function List(){
                 setColor('');
             }, 5000);
         };
+
+        return () => {
+            idleTokenRef.current !== null && clearTimeout(idleTokenRef.current);
+        };
     }, [color]);
 
     const handleInsertOrderedList = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('InsertOrderedList', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('InsertOrderedList', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('indent', false, null);
+            document.execCommand('InsertOrderedList', false, null);
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            }
         };
     };
 
     const handlerInsertUnorderedList = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('InsertUnorderedList', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('InsertUnorderedList', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('indent', false, null);
+            document.execCommand('InsertUnorderedList', false, null);
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            }
         };
     };
 
 
-    const applyColorToMarker = () => {
-        
-        if(color !== '' && (window.frames['createTextInput'])){
-                const iframe = document.getElementById('createTextInput'); // Get the iframe element
-                const iframeDoc = iframe.contentWindow.document; // Access the iframe's document
-                const style = iframeDoc.createElement('style');
-            
-                style.textContent = `
-                li::marker{
-                    color: ${color};
-                }
-        
-                /* WebKit-based browsers (Chrome, Safari) */
-                ::-webkit-scrollbar {
-                    width: 8px;
-                }
-                ::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                ::-webkit-scrollbar-thumb {
-                    background: linear-gradient(to bottom, hsl(0, 0%, 30%), hsl(240, 21%, 75%), hsl(240, 21%, 81%), hsl(240, 21%, 87%));
-                    border-radius: 5px;
-                }
-                ::-webkit-scrollbar-thumb:hover {
-                    background: linear-gradient(to bottom, hsl(0, 0%, 25%), hsl(240, 21%, 70%), hsl(240, 21%, 76%), hsl(240, 21%, 82%));
-                }
-        
-                /* Firefox */
-                body {
-                    scrollbar-width: thin;
-                    scrollbar-color: linear-gradient(to bottom, hsl(0, 0%, 30%), hsl(240, 21%, 75%), hsl(240, 21%, 81%), hsl(240, 21%, 87%)) transparent;
-                }
-                `;
-
-                iframeDoc.head.replaceChild(style, iframeDoc.head.children[0]);
-                contextObj.createEditContentRef.current = {...contextObj.createEditContentRef.current, from: 'create', hasLiColorChanged: true, Document: window.frames['createTextInput'].document}
-                contextObj.lastChosenColorForLIMarker.current = color;
+    const applyColorToMarker = () => { 
+        if(color !== ''){
+            if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+                contextObj.setLastChosenColorForLIMarker(color);
+            }
         };
-
-        if(color !== '' && (window.frames['editTextInput'])){
-            const iframe = document.getElementById('editTextInput'); // Get the iframe element
-            const iframeDoc = iframe.contentWindow.document; // Access the iframe's document
-            const style = iframeDoc.createElement('style');
-        
-            style.textContent = `
-            li::marker{
-                color: ${color};
-            }
-    
-            /* WebKit-based browsers (Chrome, Safari) */
-            ::-webkit-scrollbar {
-                width: 8px;
-            }
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-                background: linear-gradient(to bottom, hsl(0, 0%, 40%), hsl(0, 0%, 60%), hsl(0, 0%, 80%), hsl(0, 0%, 85%), hsl(0, 0%, 90%));
-                border-radius: 5px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-    
-            /* Firefox */
-            body {
-                scrollbar-width: thin;
-                scrollbar-color: #888 #f1f1f1;
-            }
-            `;
-
-            iframeDoc.head.replaceChild(style, iframeDoc.head.children[0]);
-            contextObj.createEditContentRef.current = {...contextObj.createEditContentRef.current, from: 'edit', hasLiColorChanged: true, Document: window.frames['editTextInput'].document}
-            contextObj.lastChosenColorForLIMarker.current = color;
-        }
     };
 
     const handleColorInputChange = color => {
@@ -154,6 +118,8 @@ export default function List(){
         }
         document.getElementById('color').style.display = 'block';
         document.getElementById('insertColorBtn').style.display = 'grid';
+
+        startAnimationTokenRef.current !== null && clearInterval(startAnimationTokenRef.current);
     };
     
 
@@ -168,10 +134,14 @@ export default function List(){
                 </button>
             </div>
             <p onClick={() => showColorInput()} style={{cursor: 'pointer', position: 'relative'}} className={contextObj.modeState === 'light'? styles.textLight : styles.textDark}>
-                List
+                <span id={toggleAnimation ? styles.startListAnim : ''}>
+                    List
+                </span>
                 <input id='color' value={color} onChange={e => handleColorInputChange(e.target.value)} className={styles.color} type="text"  placeholder='rgb, hsl, HEX'/>
                 <button onClick={() => applyColorToMarker()} id='insertColorBtn' className={styles.insertColorBtn}><img src={insertLIColorImg} alt="" width={11} height={11}/></button>
             </p>
+
+            <img src={pointToListImg} alt="" id={styles.pointToList} className={toggleAnimation ? styles.pointToListAnim : styles.pointToList}/>
         </div>
     );
 }

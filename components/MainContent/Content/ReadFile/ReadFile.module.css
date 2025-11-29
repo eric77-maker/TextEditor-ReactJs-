@@ -1,10 +1,10 @@
 .container{
     position: absolute;
-    top: 11%;
+    top: 10%;
     left: 5%;
     right: 5%;
-    bottom: 4%;
-    background-color: transparent;
+    bottom: 0;
+    background-color: hsl(0, 100%, 99%, 0.9);
     border-radius: 1vh;
     resize: none;
     padding: 1vh 0.5vw;
@@ -25,6 +25,23 @@
     border: none;
 }
 
+.textDiv::-webkit-scrollbar{
+    width: 8px;
+}
+
+.textDiv::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.textDiv::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom, hsl(0, 0%, 30%), hsl(240, 21%, 75%), hsl(240, 21%, 81%), hsl(240, 21%, 87%));
+    border-radius: 5px;
+}
+
+.textDiv::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, hsl(0, 0%, 25%), hsl(240, 21%, 70%), hsl(240, 21%, 76%), hsl(240, 21%, 82%));
+ }
+
 .resizeDiv{
     position: absolute;
     left: 0.2vw;
@@ -38,8 +55,10 @@
 
 #fileName{
     position: absolute;
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1vw;
     top: 0;
     left: 0;
     right: 0;
@@ -64,6 +83,8 @@
 .fileNameDark h3{
     color: aliceblue;
     box-shadow: 1px 1px 2px hsl(240, 100%, 92%);
+    box-shadow: 1px 1px 2px gray;
+    color: hsl(240, 19%, 57%);
 }
 
 .resizeDiv button{
@@ -81,22 +102,14 @@
 #editFileBtn{
     border: none;
     position: absolute;
-    padding: 1px 5px;
+    padding: 2px 5px;
     right: 6px;
-    width: 30px;
+    width: 35px;
     cursor: pointer;
-    width: 36px;
     border-radius: 5px;
-    z-index: 10;
-}
-.editFileBtnLight{
     background-color: #fff;
-    box-shadow: none;
-}
-
-.editFileBtnDark{
-    box-shadow: 1px 1px 2px #fff; 
-    background-color: #555;
+    box-shadow: 1px 1px 1px hsl(204, 7%, 73%, 0.7);
+    z-index: 10;
 }
 
 .moveUpBtn{
@@ -116,6 +129,7 @@
     bottom: 1vh;
     border-radius: 4px;
     padding: 0.5vh 0.5vw;
+    z-index: 3;
 }
 
 .pagesDivLight{
@@ -138,6 +152,7 @@
     bottom: 0;
     right: 10vw;
     height: 30px;
+    z-index: 3;
 }
 
 

@@ -14,42 +14,52 @@ export default function CopyCutPaste(){
 
 
     const handleCopy = () =>{
-        if(window.frames['createTextInput']){
-            contentCutOrCopiedRef.current = window.frames['createTextInput'].document.body.innerHTML;
-            createTextInput.document.execCommand('Copy', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
-
-        if(window.frames['editTextInput']){
-            contentCutOrCopiedRef.current = window.frames['editTextInput'].document.body.innerHTML;
-            editTextInput.document.execCommand('Copy', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('Copy', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 
     const handleCut = () =>{
-        if(window.frames['createTextInput']){
-            contentCutOrCopiedRef.current = window.frames['createTextInput'].document.body.innerHTML;
-            createTextInput.document.execCommand('Cut', false, null);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            let contentToCut;
+            if(document.getElementById('createTextInput') !== null){
+                contentToCut = document.getElementById('createTextInput').innerHTML;
+            }else{
+                contentToCut = document.getElementById('editTextInput').innerHTML
+            };
 
-        if(window.frames['editTextInput']){
-            contentCutOrCopiedRef.current = window.frames['editTextInput'].document.body.innerHTML;
-            editTextInput.document.execCommand('Cut', false, null);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+            document.execCommand('Cut', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 
     const handlePaste = () =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('Paste', false, contentCutOrCopiedRef.current);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            let contentToCut;
+            if(document.getElementById('createTextInput') !== null){
+                contentToCut = document.getElementById('createTextInput').innerHTML;
+            }else{
+                contentToCut = document.getElementById('editTextInput').innerHTML
+            };
 
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('Paste', false, contentCutOrCopiedRef.current);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+            document.execCommand('Paste', false, null);
+                
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 

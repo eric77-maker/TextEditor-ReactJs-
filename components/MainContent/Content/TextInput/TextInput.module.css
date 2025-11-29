@@ -1,0 +1,31 @@
+.textInput{
+    position: relative;
+    min-height: 90%;
+    max-height: 90%;
+    margin: 3.5% 0.5% 6.5%; 
+    overflow-y: scroll;
+    width: 99%;
+    border: none;
+    z-index: 1;
+}
+
+.textInput:focus{
+    outline: none;
+}
+
+.textInput::-webkit-scrollbar{
+    width: 8px;
+}
+
+.textInput::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.textInput::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom, hsl(0, 0%, 30%), hsl(240, 21%, 75%), hsl(240, 21%, 81%), hsl(240, 21%, 87%));
+    border-radius: 5px;
+}
+
+.textInput::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, hsl(0, 0%, 25%), hsl(240, 21%, 70%), hsl(240, 21%, 76%), hsl(240, 21%, 82%));
+}

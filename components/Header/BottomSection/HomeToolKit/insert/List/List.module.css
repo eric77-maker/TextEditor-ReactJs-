@@ -1,4 +1,5 @@
 .container{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,4 +80,70 @@
     place-content: center;
     border: none;
     background-color: transparent;
+}
+
+#startListAnim{
+    animation-name: listAnim;
+    animation-delay: 1s;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    transition: 0.3 ease-in-out;
+}
+
+@keyframes listAnim {
+    0%{
+        color: hsl(240, 33%, 55%);
+    }
+
+    25%{
+        color: hsl(171, 23%, 55%);
+    }
+
+    50%{
+        color: hsl(39, 49%, 54%);
+    }
+
+    75%{
+        color: hsl(275, 70%, 33%);
+    }
+
+    100%{
+        color: hsl(0, 70%, 60%);
+    }
+}
+
+
+#pointToList{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: 5%;
+    right: 25%;
+}
+
+.pointToList{
+    opacity: 0;
+}
+
+.pointToListAnim{
+    animation-name: pointer;
+    animation-delay: 0.3s;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    transition: 0.1 ease-in-out;
+    opacity: 0;
+}
+
+
+@keyframes pointer {
+    0%{
+        bottom: 5%;
+        opacity: 0.4;
+    }
+    100%{
+        bottom: 17%;
+        opacity: 1;
+    }
 }

@@ -10,14 +10,14 @@ export default function Color(){
     const contextObj = useContext(ContextObj);
     
     const handleColorChange = e =>{
-        if(window.frames['createTextInput']){
-            createTextInput.document.execCommand('ForeColor', false, e.target.value);
-            contextObj.createEditContentRef.current = {from: 'create', content: window.frames['createTextInput'].document.body.innerHTML};
-        };
+        if(document.getElementById('createTextInput') !== null || document.getElementById('editTextInput') !== null){
+            document.execCommand('ForeColor', false, e.target.value);
 
-        if(window.frames['editTextInput']){
-            editTextInput.document.execCommand('ForeColor', false, e.target.value);
-            contextObj.createEditContentRef.current = {from: 'edit', content: window.frames['editTextInput'].document.body.innerHTML};
+            if(document.getElementById('createTextInput') !== null){
+                contextObj.createEditContentRef.current = {from: 'create', content: document.getElementById('createTextInput').innerHTML};
+            }else{
+                contextObj.createEditContentRef.current = {from: 'edit', content: document.getElementById('editTextInput').innerHTML};
+            };
         };
     };
 

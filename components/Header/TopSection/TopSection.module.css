@@ -1,15 +1,11 @@
 .container{
     flex: 1;
     background-color: hsl(0, 0%, 78%);
-    border-top-right-radius: 0.5vh;
-    border-top-left-radius: 0.5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw 0 2vw;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
 }
 
 .container div:first-child{

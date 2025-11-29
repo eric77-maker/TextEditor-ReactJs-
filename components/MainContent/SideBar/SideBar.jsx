@@ -3,7 +3,8 @@ import trashImgLight from '/src/assets/SideBarImgs/trashImgLight.svg';
 import trashImgDark from '/src/assets/SideBarImgs/trashImgDark.png';
 import htmlFileImgLight from '/src/assets/SideBarImgs/htmlFileLight.png';
 import htmlFileImgDark from '/src/assets/SideBarImgs/htmlFileDark.png';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import {motion} from 'framer-motion'
 import { ContextObj } from '../../TextEditor/TextEditor';
 
 
@@ -12,37 +13,74 @@ import { ContextObj } from '../../TextEditor/TextEditor';
 export default function SideBar(props){
     const contextObj = useContext(ContextObj);
 
-    const unmountToolKit = () =>{
-        if(contextObj.componentMountToggler.toolKit === 'home' || contextObj.componentMountToggler.toolKit === 'insert'){
-            contextObj.setComponentMountToggler(c => ({...c, toolKit: ''}));
-        }
+    const filesDivAnim = {
+        maxHeight: ['75vh', '70vh']
+    };
+    
+    const animate = {
+        fontSize: ['2px', '2px', '10px', '12px'],
+        height: ['5px', '30px'],
+        opacity: [0, 1],
     };
 
+    useEffect(() => {
+        console.log('re-rendered Sidebar...')
+    }, []);
+
     const readFileHandler = file =>{
-        props.readFileRef.current = file;
-        props.fileToEditRef.current = file;
-        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
-        contextObj.createEditContentRef.current = {from: '', content: ''}; 
+        if(!contextObj.madeChangesRef.current){
+            if(props.readFileRef.current !== null){
+                if(contextObj.componentMountToggler.actionContent === 'read'){
+                    if(props.readFileRef.current.fileName !== file.fileName){
+                        props.readFileRef.current = file;
+                        props.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.createEditContentRef.current = {from: '', content: ''};
+                    }else{  
+                        window.alert('that is the current file you are reading!');
+                    };
+                };
+    
+                if(contextObj.componentMountToggler.actionContent === 'edit'){
+                    if(props.readFileRef.current.fileName !== file.fileName){
+                        props.readFileRef.current = file;
+                        props.fileToEditRef.current = file;
+                        contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    }else{
+                        contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    };
 
-        if(props.readFileRef.current === null){
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+                    contextObj.createEditContentRef.current = {from: '', content: ''}; 
+                };
+            }else{
+                props.readFileRef.current = file;
+                props.fileToEditRef.current = file;
+                contextObj.setFileName(f => ({...f, fileName: file.fileName}));
+                contextObj.createEditContentRef.current = {from: '', content: ''};  
+                contextObj.componentMountToggler.actionContent !== 'read' && contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read'}));
+            };
         }else{
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'read', reRenderReadComp: !c.reRenderReadComp}));
+            contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file };
+/*             if(contextObj.lastCurrentPageRef.current > 1 && contextObj.lastCurrentPageRef.current !== contextObj.fileToEditRef.current.editLastCurrentPage){
+                contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file , hasEditLastCurrentPage: true};
+            }else{
+                contextObj.storeFileTempRef.current = {...contextObj.storeFileTempRef.current, file , hasEditLastCurrentPage: false};
+            };     */
+            
+            
+            if(contextObj.wasGoingToAfterEditRef.current !== 'read'){
+                contextObj.wasGoingToAfterEditRef.current = 'read';
+            };
+            !contextObj.promptWithoutSavingChangesOnEdit && contextObj.setPromptWithoutSavingChangesOnEdit(true);
         };
-
     };
 
     const removeFileFromStore = (id, fileName) =>{
-        if(fileName === props.fileToEditRef.current.fileName){
-            props.fileToEditRef.current = {fileName: null};
-        };
-
-        if(window.frames['editTextInput'] && props.fileToEditRef.current.fileName === fileName && props.fileToEditRef.current.id == id){
-            window.frames['editTextInput'].document.body.innerHTML = '';
-        };
-
-        if(props.readFileRef.current.fileName == fileName && props.readFileRef.current.id === id){
-            contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
+        if(contextObj.readFileRef.current !== null){
+            if(contextObj.readFileRef.current.fileName === fileName){
+                contextObj.setComponentMountToggler(c => ({...c, actionContent: 'create'}));
+            };
         };
 
         const newRecentFiles = contextObj.recentFiles.filter((file, index) =>{
@@ -69,7 +107,7 @@ export default function SideBar(props){
     };
 
     return(
-        <section onClick={() => unmountToolKit()} id={styles.container} className={contextObj.modeState === 'light'? styles.containerLight: styles.containerDark}>
+        <section id={styles.container} className={contextObj.modeState === 'light'? styles.containerLight: styles.containerDark}>
             <div className={styles.header}>
                 <p className={contextObj.modeState === 'light'? styles.titleLight : styles.titleDark}>
                     Recent Files
@@ -77,7 +115,7 @@ export default function SideBar(props){
                 <button>+</button>
             </div>
 
-            <div id={styles.filesDiv}>
+        <motion.div animate={contextObj.componentMountToggler.toolKit === 'home' ? filesDivAnim : {}} duration={{duration: 0.2}} style={{maxHeight: contextObj.componentMountToggler.toolKit === 'home' ? '70vh' : '75vh'}} id={styles.filesDiv}>
                 {contextObj.recentFiles.length > 0 && contextObj.recentFiles.map((file, index) =>(
                     <span style={{position: 'relative'}} key={index}>
                         <div id={styles.textImgDiv}>
@@ -93,7 +131,12 @@ export default function SideBar(props){
                     </span>
                 ))}
                 {contextObj.recentFiles.length < 1 && <p id={styles.noFiles} className={contextObj.modeState === 'light'? styles.noFilesLight : styles.noFilesDark}>No Recent File</p>}
-            </div>
+            </motion.div>
+            {contextObj.componentMountToggler.toolKit === 'home' && 
+                <motion.div animate={animate} transition={{duration: 0.4}} className={styles.addToRecentOnHomeToolKit}>
+                    <button>+</button>
+                </motion.div>
+            }
         </section>
     );
 };

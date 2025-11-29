@@ -18,6 +18,15 @@
     align-items: center;
 }
 
+.confirmSaveDivCompDiv p{
+    margin-top: 5px;
+    padding: 1px 8px;
+    border-radius: 2px;
+    background-color: #fff;
+    max-width: 300px;
+    color: rgb(236, 110, 110);
+}
+
 .confirmFileNameInput{
     min-width: 25vw;
     max-width: 300px;
